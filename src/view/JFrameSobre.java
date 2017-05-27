@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.net.URL;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 
 /**
  *
@@ -87,6 +88,11 @@ public class JFrameSobre extends javax.swing.JFrame {
 
         jButtonRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/registro16x16.png"))); // NOI18N
         jButtonRegistro.setText("Registro");
+        jButtonRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,6 +145,13 @@ public class JFrameSobre extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jButtonAtualizarActionPerformed
+
+    private void jButtonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroActionPerformed
+        // TODO add your handling code here:
+        JDialogRegistro dialog = new JDialogRegistro(new javax.swing.JFrame(), true);
+        dialog.setVisible(true);
+        
+    }//GEN-LAST:event_jButtonRegistroActionPerformed
 
     /**
      * @param args the command line arguments
