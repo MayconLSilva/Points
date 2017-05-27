@@ -98,7 +98,7 @@ public class Points {
 
             //Criando itens do menu
             MenuItem menuSobre = new MenuItem("Sobre");
-            MenuItem menuDados = new MenuItem("Dados Empresa");
+            MenuItem menuDados = new MenuItem("Meus Dados");
 
             //Criando objetos do tipo Checkbox
             CheckboxMenuItem SincAutomatica = new CheckboxMenuItem("Sinc. Automática");
