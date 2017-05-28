@@ -22,7 +22,9 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
+import view.JDialogConexao;
 import view.JFrameSobre;
+import view.JFrameDados;
 
 /**
  *
@@ -82,8 +84,8 @@ public class Points {
 
             };
 
-            //Criamos um ActionListener para a exibir uma mensagem na tela ao clicarmos  
-            ActionListener mostramsglistener = new ActionListener() {
+            //Criamos um ActionListener para a exibir a tela sobre ao clicarmos  
+            ActionListener mostrarJanelaSobre = new ActionListener() {
 
                 public void actionPerformed(ActionEvent e) {
                     //JOptionPane.showMessageDialog(null,"Siste de Pontuação e Qualidade - Registrador ");
@@ -91,6 +93,29 @@ public class Points {
                 }
 
             };
+            
+            //Criamos um ActionListener para a exibir a tela ao clicarmos  
+            ActionListener mostrarJanelaDados = new ActionListener() {
+
+                public void actionPerformed(ActionEvent e) {
+                    //JOptionPane.showMessageDialog(null,"Siste de Pontuação e Qualidade - Registrador ");
+                    new JFrameDados().setVisible(true);
+                }
+
+            };
+            
+            //Criamos um ActionListener para a exibir a tela ao clicarmos  
+            ActionListener mostrarJanelaConexao = new ActionListener() {
+                
+                public void actionPerformed(ActionEvent e) {
+                    
+                    JDialogConexao dialogConex = new JDialogConexao(new javax.swing.JFrame(), true);
+                    dialogConex.setVisible(true);
+                }
+
+            };
+            
+            
 
             //Criando um objeto PopupMenu com ele aparece todos os menus
             PopupMenu popup = new PopupMenu("Menu de Opções");
@@ -98,6 +123,7 @@ public class Points {
 
             //Criando itens do menu
             MenuItem menuSobre = new MenuItem("Sobre");
+            MenuItem menuConexao = new MenuItem("Testar Conexão");
             MenuItem menuDados = new MenuItem("Meus Dados");
 
             //Criando objetos do tipo Checkbox
@@ -114,18 +140,29 @@ public class Points {
             MenuItem menuSair = new MenuItem("Sair");
 
             //Na linha a seguir associamos os objetos aos eventos
-            menuSobre.addActionListener(mostramsglistener);
+            menuSobre.addActionListener(mostrarJanelaSobre);
+            menuDados.addActionListener(mostrarJanelaDados);
             menuSair.addActionListener(exitListener);
+            menuConexao.addActionListener(mostrarJanelaConexao);
+            
+            
 
             //Adicionando itens ao PopupMenu
             popup.add(menuSobre);
+            popup.add(menuConexao);
 
             //Adiconando um separador
             popup.addSeparator();
             //Fim do Separador
+            
             popup.add(menuDados);
             popup.add(SincAutomatica);
             popup.add(SubMenuSincronizacao);
+            
+            //Adiconando um separador
+            popup.addSeparator();
+            //Fim do Separador
+            
             popup.add(menuSair);
 
             //Criando um objeto do tipo TrayIcon

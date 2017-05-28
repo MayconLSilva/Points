@@ -53,7 +53,7 @@ public class JFrameSobre extends javax.swing.JFrame {
         jButtonAtualizar = new javax.swing.JButton();
         jButtonRegistro = new javax.swing.JButton();
 
-        setTitle("Points - Sistema de Pontuação e Qualidade");
+        setTitle("SOBRE | Points - Sistema de Pontuação e Qualidade");
         setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
