@@ -1,0 +1,9 @@
+<?xml version=’1.0' encoding=’ISO-8859-1' ?>
+<config>
+  <bancomysql>
+    <servidormysql>jdbc:mysql://NOTEBOOK:3306/</servidormysql>
+    <bancodadosmysql>jdbc:mysql://NOTEBOOK:3306/pointsapi</bancodadosmysql>
+    <usuariomysql>sistema</usuariomysql>
+    <senhamysql>M12345</senhamysql>		
+  </bancomysql>  
+</config>

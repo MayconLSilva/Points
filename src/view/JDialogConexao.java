@@ -5,16 +5,26 @@
  */
 package view;
 
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.TrayIcon;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import static java.lang.Thread.sleep;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import util.ConectaBancoMysql;
 
 /**
  *
  * @author PEGAZUS
  */
 public class JDialogConexao extends javax.swing.JDialog {
-
+    
+    ConectaBancoMysql conn = new ConectaBancoMysql();
     /**
      * Creates new form JDialogConexao
      */
@@ -22,6 +32,8 @@ public class JDialogConexao extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocation(500,200);
+        
+        
         
         //Setando icone da barra de tarefa e barra de titulo
         setIconImage(Toolkit.getDefaultToolkit().getImage(JFrameSobre.class.getResource("/img/PointsLogoBarraTarefa.png")));
@@ -104,7 +116,8 @@ public class JDialogConexao extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonTestarConexaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTestarConexaoActionPerformed
-        new Thread() {
+        
+                    new Thread() {
             public void run() {
                 for (int i = 0; i < 101; i++) {
                     try {
@@ -126,7 +139,10 @@ public class JDialogConexao extends javax.swing.JDialog {
 
                 TesteConexao();
             }
-        }.start();       
+        }.start();
+            
+            
+           
         
     }//GEN-LAST:event_jButtonTestarConexaoActionPerformed
 
@@ -134,6 +150,8 @@ public class JDialogConexao extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
+    
+    
     public void TesteConexao() {
 
         try {
