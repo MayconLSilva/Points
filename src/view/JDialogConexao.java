@@ -5,26 +5,21 @@
  */
 package view;
 
-import java.awt.Image;
+import controle.SincronizaCliente;
 import java.awt.Toolkit;
-import java.awt.TrayIcon;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import static java.lang.Thread.sleep;
-import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import util.ConectaBancoMysql;
+import util.ConectaBancoPostgres;
 
 /**
  *
  * @author PEGAZUS
  */
 public class JDialogConexao extends javax.swing.JDialog {
-    
-    ConectaBancoMysql conn = new ConectaBancoMysql();
+            
     /**
      * Creates new form JDialogConexao
      */
@@ -149,9 +144,8 @@ public class JDialogConexao extends javax.swing.JDialog {
     private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
         dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
-
-    
-    
+   
+        
     public void TesteConexao() {
 
         try {
@@ -174,7 +168,7 @@ public class JDialogConexao extends javax.swing.JDialog {
 
     }
     
-    
+        
     /**
      * @param args the command line arguments
      */

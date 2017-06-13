@@ -6,6 +6,7 @@
 package points;
 
 //Imports
+import controle.SincronizaCliente;
 import java.awt.AWTException;
 import java.awt.CheckboxMenuItem;
 import java.awt.Image;
@@ -16,8 +17,12 @@ import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -31,6 +36,10 @@ import view.JFrameDados;
  * @author Maycon L. Silva
  */
 public class Points {
+    
+    
+    
+    public static final long TEMPO = (1000 * 60);
 
     public static void main(String[] args) {
 
@@ -114,8 +123,6 @@ public class Points {
                 }
 
             };
-            
-            
 
             //Criando um objeto PopupMenu com ele aparece todos os menus
             PopupMenu popup = new PopupMenu("Menu de Opções");
@@ -145,7 +152,42 @@ public class Points {
             menuSair.addActionListener(exitListener);
             menuConexao.addActionListener(mostrarJanelaConexao);
             
-            
+            //Evento do checkbox
+            SincAutomatica.addItemListener(new ItemListener() {
+                public void itemStateChanged(ItemEvent e) {
+                    if (SincAutomatica.getState()) {
+
+                        JOptionPane.showMessageDialog(null,"Sincronização Ativada","Sincronização Automática",JOptionPane.INFORMATION_MESSAGE);
+                        //Inicio da classe tempo
+                        System.out.println("Inicio do Contador");
+                        Timer timer = null;
+                        if (timer == null) {
+                            timer = new Timer();
+                            TimerTask tarefa = new TimerTask() {
+                                public void run() {
+                                    try {
+                                        
+                                        //Chamando a classe sincroniza cliente
+                                        SincronizaCliente sincCliente = new SincronizaCliente();
+                                        sincCliente.SincCliente();
+                                        //Fim do chama classe sincroniza cliente
+                                        System.out.println("Teste agendador");                                        
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            };
+                            timer.scheduleAtFixedRate(tarefa, TEMPO, TEMPO);
+                        }
+                        //Fim da classe tempo
+
+                    } else {
+                        JOptionPane.showMessageDialog(null,"Sincronização Desativada","Sincronização Automática",JOptionPane.WARNING_MESSAGE);
+                    }
+                }
+            });
+            //Fim do evento do checkbox            
 
             //Adicionando itens ao PopupMenu
             popup.add(menuSobre);
@@ -173,9 +215,9 @@ public class Points {
 
                 public void actionPerformed(ActionEvent e) {
 
-                    trayIcon.displayMessage("Action Event",
+                    trayIcon.displayMessage("testes",
                             "Um Evento foi disparado",
-                            TrayIcon.MessageType.INFO);
+                            TrayIcon.MessageType.ERROR);
 
                 }
 
@@ -204,9 +246,8 @@ public class Points {
 
             //Caso o item  System Tray não for suportado
             JOptionPane.showMessageDialog(null, "recurso ainda não esta disponível pra o seu sistema");
-
         }
-
+        
     }
 
 }

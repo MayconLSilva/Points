@@ -1,0 +1,9 @@
+<?xml version=’1.0' encoding=’ISO-8859-1' ?>
+<config>
+  <bancomysql>
+    <servidormysql>jdbc:postgresql://NOTEBOOK:5432/</servidormysql>
+    <bancodadosmysql>jdbc:postgresql://NOTEBOOK:5432/posto</bancodadosmysql>
+    <usuariomysql>sistema</usuariomysql>
+    <senhamysql>M12345</senhamysql>		
+  </bancomysql>  
+</config>
